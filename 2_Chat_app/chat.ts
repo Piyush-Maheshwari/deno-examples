@@ -15,7 +15,8 @@ function brodcast(message: string, senderId?: string): void {
 export async function chat(ws: WebSocket): Promise<void> {
   const userId = v4.generate();
   users.set(userId, ws);
-  brodcast(`> User with the id ${users} is connected`);
+  console.log(users);
+  brodcast(`> User with the id ${userId} is connected`);
 
   for await(const event of ws){
     const message = typeof event === 'string' ? event : ''
